@@ -1,20 +1,40 @@
 import type {
+	IAuthenticateGeneric,
+	Icon,
+	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
-	IAuthenticateGeneric,
-	ICredentialTestRequest,
 } from 'n8n-workflow';
+
+const DEFAULT_BASE_URL = 'https://dev-avatare.ableplatform.io';
 
 export class AutoGlassApi implements ICredentialType {
 	name = 'autoGlassApi';
-	displayName = 'AutoGlass Api';
+
+	displayName = 'AutoGlass API';
+
+	icon: Icon = {
+		light: 'file:../nodes/AutoGlass/autoglass.svg',
+		dark: 'file:../nodes/AutoGlass/autoglass.dark.svg',
+	};
+
 	documentationUrl = 'https://your-docs-link.com';
+
 	properties: INodeProperties[] = [
+		{
+			displayName: 'Base URL',
+			name: 'baseUrl',
+			type: 'string',
+			default: DEFAULT_BASE_URL,
+			placeholder: DEFAULT_BASE_URL,
+			description: 'API base URL (e.g. for custom or dev environments)',
+		},
 		{
 			displayName: 'Username',
 			name: 'username',
 			type: 'string',
 			default: '',
+			required: true,
 		},
 		{
 			displayName: 'Password',
@@ -22,12 +42,15 @@ export class AutoGlassApi implements ICredentialType {
 			type: 'string',
 			typeOptions: { password: true },
 			default: '',
+			required: true,
 		},
 		{
 			displayName: 'API Key',
 			name: 'apiKey',
 			type: 'string',
+			typeOptions: { password: true },
 			default: '',
+			required: true,
 		},
 		{
 			displayName: 'Sys Module ID',
@@ -49,8 +72,9 @@ export class AutoGlassApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
+			baseURL: '={{$credentials.baseUrl || "' + DEFAULT_BASE_URL + '"}}',
+			url: '/api/v1/core/auth/signin',
 			method: 'POST',
-			url: 'https://dev-avatare.ableplatform.io/api/v1/core/auth/signin',
 			body: {
 				username: '={{$credentials.username}}',
 				password: '={{$credentials.password}}',
