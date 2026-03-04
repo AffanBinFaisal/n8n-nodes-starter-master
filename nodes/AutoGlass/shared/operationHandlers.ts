@@ -152,6 +152,24 @@ async function systemStatisticsGet(
 	return { response };
 }
 
+async function sysModuleGetAll(
+	this: IExecuteFunctions,
+	_itemIndex: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', '/api/v1/core/sys-module');
+	return { response };
+}
+
+async function sysLangGetAll(
+	this: IExecuteFunctions,
+	_itemIndex: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', '/api/v1/core/sys-lang');
+	return { response };
+}
+
 export const OPERATION_HANDLERS: Record<string, Record<string, ExecuteHandler>> = {
 	user: { getProfile: userGetProfile, getAll: userGetAll },
 	loan: { getLoans: loanGetLoans },
@@ -160,4 +178,6 @@ export const OPERATION_HANDLERS: Record<string, Record<string, ExecuteHandler>> 
 	auditLog: { getAll: auditLogGetAll },
 	genericScreen: { getMeta: genericScreenGetMeta },
 	systemStatistics: { get: systemStatisticsGet },
+	sysModule: { getAll: sysModuleGetAll },
+	sysLang: { getAll: sysLangGetAll },
 };

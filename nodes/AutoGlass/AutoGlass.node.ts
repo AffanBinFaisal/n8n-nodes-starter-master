@@ -13,10 +13,12 @@ import { genericMenuDescription } from './resources/genericMenu';
 import { auditLogDescription } from './resources/auditLog';
 import { genericScreenDescription } from './resources/genericScreen';
 import { systemStatisticsDescription } from './resources/systemStatistics';
+import { sysModuleDescription } from './resources/sysModule';
+import { sysLangDescription } from './resources/sysLang';
 import { getAuthToken } from './shared/transport';
 import { OPERATION_HANDLERS } from './shared/operationHandlers';
 
-export class AutoGlass implements INodeType {
+export class Autoglass implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'AutoGlass',
 		name: 'autoglass',
@@ -52,13 +54,15 @@ export class AutoGlass implements INodeType {
 				type: 'options',
 				noDataExpression: true,
 				options: [
-					{ name: 'User', value: 'user' },
+					{ name: 'Audit Log', value: 'auditLog' },
+					{ name: 'Generic Menu', value: 'genericMenu' },
+					{ name: 'Generic Screen', value: 'genericScreen' },
 					{ name: 'Loan', value: 'loan' },
 					{ name: 'System Audit Event Type', value: 'sysAuditEventType' },
-					{ name: 'Generic Menu', value: 'genericMenu' },
-					{ name: 'Audit Log', value: 'auditLog' },
-					{ name: 'Generic Screen', value: 'genericScreen' },
-					{ name: 'System Statistics', value: 'systemStatistics' },
+					{ name: 'System Language', value: 'sysLang' },
+					{ name: 'System Module', value: 'sysModule' },
+					{ name: 'System Statistic', value: 'systemStatistics' },
+					{ name: 'User', value: 'user' },
 				],
 				default: 'user',
 			},
@@ -69,6 +73,8 @@ export class AutoGlass implements INodeType {
 			...auditLogDescription,
 			...genericScreenDescription,
 			...systemStatisticsDescription,
+			...sysModuleDescription,
+			...sysLangDescription,
 		],
 		usableAsTool: true,
 	};

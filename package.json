@@ -1,15 +1,15 @@
 {
 	"name": "n8n-nodes-starter-master",
 	"version": "0.1.0",
-	"description": "",
+	"description": "n8n community nodes and credentials for AutoGlass API and GitHub Issues",
 	"license": "MIT",
 	"homepage": "",
 	"keywords": [
 		"n8n-community-node-package"
 	],
 	"author": {
-		"name": "",
-		"email": ""
+		"name": "n8n Community",
+		"email": "community@n8n.io"
 	},
 	"repository": {
 		"type": "git",
@@ -37,7 +37,7 @@
 		],
 		"nodes": [
 			"dist/nodes/GithubIssues/GithubIssues.node.js",
-			"dist/nodes/AutoGlass/AutoGlass.node.js"
+			"dist/nodes/AutoGlass/Autoglass.node.js"
 		]
 	},
 	"devDependencies": {

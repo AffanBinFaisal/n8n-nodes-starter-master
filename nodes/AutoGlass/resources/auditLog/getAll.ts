@@ -14,12 +14,12 @@ export const auditLogGetAllDescription: INodeProperties[] = [
 		displayOptions: { show: showOnlyForAuditLogGetAll },
 		options: [
 			{
-				name: 'Full (entity + columns + data)',
+				name: 'Full (Entity + Columns + Data)',
 				value: 'full',
 				description: 'Same as API: one item with entity, columns, and data array',
 			},
 			{
-				name: 'Data rows only',
+				name: 'Data Rows Only',
 				value: 'rows',
 				description: 'One output item per audit log record (easier to loop in workflows)',
 			},
@@ -27,7 +27,7 @@ export const auditLogGetAllDescription: INodeProperties[] = [
 		description: 'Full response matches browser; rows splits each record into its own item',
 	},
 	{
-		displayName: 'Accept-Language',
+		displayName: 'Accept Language',
 		name: 'acceptLanguage',
 		type: 'string',
 		default: 'en',
@@ -50,7 +50,7 @@ export const auditLogGetAllDescription: INodeProperties[] = [
 		typeOptions: { minValue: 1, maxValue: 1000 },
 		default: 50,
 		displayOptions: { show: showOnlyForAuditLogGetAll },
-		description: 'Maximum number of results to return',
+		description: 'Max number of results to return',
 	},
 	{
 		displayName: 'Sys Module ID',
