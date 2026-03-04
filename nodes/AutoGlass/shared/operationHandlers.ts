@@ -813,6 +813,272 @@ async function dealerPortalSysTermTypeGetAll(
 	return { response };
 }
 
+async function dealerPortalDirCurrentMonthDaysGetAll(
+	this: IExecuteFunctions,
+	_i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-current-month-days`);
+	return { response };
+}
+
+async function dealerPortalDirPayDayGetAll(
+	this: IExecuteFunctions,
+	_i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-pay-day`);
+	return { response };
+}
+
+async function dealerPortalDirStateGetAll(
+	this: IExecuteFunctions,
+	i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const qs = buildDirQs.call(this, i, [
+		{ param: 'changedByUsername', qsKey: 'changed_by_username' },
+		{ param: 'created', qsKey: 'created' },
+		{ param: 'id', qsKey: 'id' },
+		{ param: 'limit', qsKey: 'limit' },
+		{ param: 'name', qsKey: 'name' },
+		{ param: 'pkRecordId', qsKey: 'pk_record_id' },
+		{ param: 'search', qsKey: 'search' },
+		{ param: 'updated', qsKey: 'updated' },
+	]);
+	if (typeof qs.limit === 'string') qs.limit = parseInt(qs.limit, 10) || 50;
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-state`, { qs });
+	return { response };
+}
+
+async function dealerPortalDirIncomeFrequencyGetAll(
+	this: IExecuteFunctions,
+	i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const qs = buildDirQs.call(this, i, [
+		{ param: 'changedByUsername', qsKey: 'changed_by_username' },
+		{ param: 'code', qsKey: 'code' },
+		{ param: 'created', qsKey: 'created' },
+		{ param: 'id', qsKey: 'id' },
+		{ param: 'limit', qsKey: 'limit' },
+		{ param: 'name', qsKey: 'name' },
+		{ param: 'pkRecordId', qsKey: 'pk_record_id' },
+		{ param: 'search', qsKey: 'search' },
+		{ param: 'updated', qsKey: 'updated' },
+	]);
+	if (typeof qs.limit === 'string') qs.limit = parseInt(qs.limit, 10) || 50;
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-income-frequency`, { qs });
+	return { response };
+}
+
+async function dealerPortalDirJobPositionGetAll(
+	this: IExecuteFunctions,
+	i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const qs = buildDirQs.call(this, i, [
+		{ param: 'changedByUsername', qsKey: 'changed_by_username' },
+		{ param: 'created', qsKey: 'created' },
+		{ param: 'id', qsKey: 'id' },
+		{ param: 'limit', qsKey: 'limit' },
+		{ param: 'name', qsKey: 'name' },
+		{ param: 'pkRecordId', qsKey: 'pk_record_id' },
+		{ param: 'search', qsKey: 'search' },
+		{ param: 'updated', qsKey: 'updated' },
+	]);
+	if (typeof qs.limit === 'string') qs.limit = parseInt(qs.limit, 10) || 50;
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-job-position`, { qs });
+	return { response };
+}
+
+async function dealerPortalDirMarketingSourceGetAll(
+	this: IExecuteFunctions,
+	i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const qs = buildDirQs.call(this, i, [
+		{ param: 'changedByUsername', qsKey: 'changed_by_username' },
+		{ param: 'created', qsKey: 'created' },
+		{ param: 'id', qsKey: 'id' },
+		{ param: 'limit', qsKey: 'limit' },
+		{ param: 'name', qsKey: 'name' },
+		{ param: 'pkRecordId', qsKey: 'pk_record_id' },
+		{ param: 'search', qsKey: 'search' },
+		{ param: 'updated', qsKey: 'updated' },
+	]);
+	if (typeof qs.limit === 'string') qs.limit = parseInt(qs.limit, 10) || 50;
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-marketing-source`, { qs });
+	return { response };
+}
+
+async function dealerPortalDirAnnualGrossRevenueGetAll(
+	this: IExecuteFunctions,
+	i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const qs = buildDirQs.call(this, i, [
+		{ param: 'changedByUsername', qsKey: 'changed_by_username' },
+		{ param: 'created', qsKey: 'created' },
+		{ param: 'id', qsKey: 'id' },
+		{ param: 'limit', qsKey: 'limit' },
+		{ param: 'name', qsKey: 'name' },
+		{ param: 'pkRecordId', qsKey: 'pk_record_id' },
+		{ param: 'search', qsKey: 'search' },
+		{ param: 'updated', qsKey: 'updated' },
+	]);
+	if (typeof qs.limit === 'string') qs.limit = parseInt(qs.limit, 10) || 50;
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-annual-gross-revenue`, { qs });
+	return { response };
+}
+
+async function dealerPortalDirBusinessLocationGetAll(
+	this: IExecuteFunctions,
+	i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const qs = buildDirQs.call(this, i, [
+		{ param: 'changedByUsername', qsKey: 'changed_by_username' },
+		{ param: 'created', qsKey: 'created' },
+		{ param: 'id', qsKey: 'id' },
+		{ param: 'limit', qsKey: 'limit' },
+		{ param: 'name', qsKey: 'name' },
+		{ param: 'pkRecordId', qsKey: 'pk_record_id' },
+		{ param: 'search', qsKey: 'search' },
+		{ param: 'updated', qsKey: 'updated' },
+	]);
+	if (typeof qs.limit === 'string') qs.limit = parseInt(qs.limit, 10) || 50;
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-business-location`, { qs });
+	return { response };
+}
+
+async function dealerPortalDirIndustryGetAll(
+	this: IExecuteFunctions,
+	i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const qs = buildDirQs.call(this, i, [
+		{ param: 'changedByUsername', qsKey: 'changed_by_username' },
+		{ param: 'created', qsKey: 'created' },
+		{ param: 'id', qsKey: 'id' },
+		{ param: 'limit', qsKey: 'limit' },
+		{ param: 'name', qsKey: 'name' },
+		{ param: 'pkRecordId', qsKey: 'pk_record_id' },
+		{ param: 'search', qsKey: 'search' },
+		{ param: 'updated', qsKey: 'updated' },
+	]);
+	if (typeof qs.limit === 'string') qs.limit = parseInt(qs.limit, 10) || 50;
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-industry`, { qs });
+	return { response };
+}
+
+async function dealerPortalDirBusinessRoleGetAll(
+	this: IExecuteFunctions,
+	i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const qs = buildDirQs.call(this, i, [
+		{ param: 'changedByUsername', qsKey: 'changed_by_username' },
+		{ param: 'created', qsKey: 'created' },
+		{ param: 'id', qsKey: 'id' },
+		{ param: 'limit', qsKey: 'limit' },
+		{ param: 'name', qsKey: 'name' },
+		{ param: 'pkRecordId', qsKey: 'pk_record_id' },
+		{ param: 'search', qsKey: 'search' },
+		{ param: 'updated', qsKey: 'updated' },
+	]);
+	if (typeof qs.limit === 'string') qs.limit = parseInt(qs.limit, 10) || 50;
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-business-role`, { qs });
+	return { response };
+}
+
+async function dealerPortalDirMaritalStatusGetAll(
+	this: IExecuteFunctions,
+	i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const qs = buildDirQs.call(this, i, [
+		{ param: 'cbsCode', qsKey: 'cbs_code' },
+		{ param: 'changedByUsername', qsKey: 'changed_by_username' },
+		{ param: 'code', qsKey: 'code' },
+		{ param: 'created', qsKey: 'created' },
+		{ param: 'id', qsKey: 'id' },
+		{ param: 'limit', qsKey: 'limit' },
+		{ param: 'name', qsKey: 'name' },
+		{ param: 'pkRecordId', qsKey: 'pk_record_id' },
+		{ param: 'search', qsKey: 'search' },
+		{ param: 'updated', qsKey: 'updated' },
+	]);
+	if (typeof qs.limit === 'string') qs.limit = parseInt(qs.limit, 10) || 50;
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-marital-status`, { qs });
+	return { response };
+}
+
+async function dealerPortalDirCitizenshipGetAll(
+	this: IExecuteFunctions,
+	i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const qs = buildDirQs.call(this, i, [
+		{ param: 'changedByUsername', qsKey: 'changed_by_username' },
+		{ param: 'created', qsKey: 'created' },
+		{ param: 'id', qsKey: 'id' },
+		{ param: 'limit', qsKey: 'limit' },
+		{ param: 'name', qsKey: 'name' },
+		{ param: 'pkRecordId', qsKey: 'pk_record_id' },
+		{ param: 'search', qsKey: 'search' },
+		{ param: 'updated', qsKey: 'updated' },
+	]);
+	if (typeof qs.limit === 'string') qs.limit = parseInt(qs.limit, 10) || 50;
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-citizenship`, { qs });
+	return { response };
+}
+
+async function dealerPortalDirAttachmentTypeGetAll(
+	this: IExecuteFunctions,
+	_i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/dir-attachment-type`);
+	return { response };
+}
+
+async function dealerPortalPartnerGetAll(
+	this: IExecuteFunctions,
+	_i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/partner`);
+	return { response };
+}
+
+async function dealerPortalInvoiceGetAll(
+	this: IExecuteFunctions,
+	_i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/invoice`);
+	return { response };
+}
+
+async function dealerPortalApplicantGetAll(
+	this: IExecuteFunctions,
+	_i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/applicant`);
+	return { response };
+}
+
+async function dealerPortalPartnerInfoGetAll(
+	this: IExecuteFunctions,
+	_i: number,
+	authContext: AuthContext,
+): Promise<ExecuteResult> {
+	const response = await autoGlassApiRequest.call(this, authContext, 'GET', `${DEALER_BASE}/partner-info`);
+	return { response };
+}
+
 function buildDirQs(
 	this: IExecuteFunctions,
 	i: number,
@@ -990,9 +1256,26 @@ export const OPERATION_HANDLERS: Record<string, Record<string, ExecuteHandler>> 
 	dealerPortalMyLoan: { getAll: dealerPortalMyLoanGetAll },
 	dealerPortalOngoingPayment: { getAll: dealerPortalOngoingPaymentGetAll },
 	dealerPortalPayment: { getAll: dealerPortalPaymentGetAll },
+	dealerPortalDirAnnualGrossRevenue: { getAll: dealerPortalDirAnnualGrossRevenueGetAll },
+	dealerPortalDirBusinessLocation: { getAll: dealerPortalDirBusinessLocationGetAll },
+	dealerPortalDirCurrentMonthDays: { getAll: dealerPortalDirCurrentMonthDaysGetAll },
+	dealerPortalDirBusinessRole: { getAll: dealerPortalDirBusinessRoleGetAll },
+	dealerPortalDirCitizenship: { getAll: dealerPortalDirCitizenshipGetAll },
 	dealerPortalDirCurrency: { getAll: dealerPortalDirCurrencyGetAll },
+	dealerPortalDirAttachmentType: { getAll: dealerPortalDirAttachmentTypeGetAll },
+	dealerPortalDirIncomeFrequency: { getAll: dealerPortalDirIncomeFrequencyGetAll },
+	dealerPortalDirIndustry: { getAll: dealerPortalDirIndustryGetAll },
+	dealerPortalDirJobPosition: { getAll: dealerPortalDirJobPositionGetAll },
+	dealerPortalDirMaritalStatus: { getAll: dealerPortalDirMaritalStatusGetAll },
+	dealerPortalDirMarketingSource: { getAll: dealerPortalDirMarketingSourceGetAll },
+	dealerPortalDirPayDay: { getAll: dealerPortalDirPayDayGetAll },
 	dealerPortalDirRepaymentInterval: { getAll: dealerPortalDirRepaymentIntervalGetAll },
+	dealerPortalDirState: { getAll: dealerPortalDirStateGetAll },
+	dealerPortalApplicant: { getAll: dealerPortalApplicantGetAll },
+	dealerPortalInvoice: { getAll: dealerPortalInvoiceGetAll },
 	dealerPortalProduct: { getAll: dealerPortalProductGetAll },
+	dealerPortalPartner: { getAll: dealerPortalPartnerGetAll },
+	dealerPortalPartnerInfo: { getAll: dealerPortalPartnerInfoGetAll },
 	dealerPortalSysLoanOperationStatus: { getAll: dealerPortalSysLoanOperationStatusGetAll },
 	dealerPortalSysLoanOperationType: { getAll: dealerPortalSysLoanOperationTypeGetAll },
 	dealerPortalSysLoanScheduleItemStatus: { getAll: dealerPortalSysLoanScheduleItemStatusGetAll },

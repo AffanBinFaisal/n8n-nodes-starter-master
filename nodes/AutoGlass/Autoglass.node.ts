@@ -48,8 +48,25 @@ import { dealerPortalMyAppDescription } from './resources/dealerPortalMyApp';
 import { dealerPortalMyLoanDescription } from './resources/dealerPortalMyLoan';
 import { dealerPortalOngoingPaymentDescription } from './resources/dealerPortalOngoingPayment';
 import { dealerPortalPaymentDescription } from './resources/dealerPortalPayment';
+import { dealerPortalDirAnnualGrossRevenueDescription } from './resources/dealerPortalDirAnnualGrossRevenue';
+import { dealerPortalDirAttachmentTypeDescription } from './resources/dealerPortalDirAttachmentType';
+import { dealerPortalDirBusinessLocationDescription } from './resources/dealerPortalDirBusinessLocation';
+import { dealerPortalDirBusinessRoleDescription } from './resources/dealerPortalDirBusinessRole';
+import { dealerPortalDirCitizenshipDescription } from './resources/dealerPortalDirCitizenship';
+import { dealerPortalDirCurrentMonthDaysDescription } from './resources/dealerPortalDirCurrentMonthDays';
 import { dealerPortalDirCurrencyDescription } from './resources/dealerPortalDirCurrency';
+import { dealerPortalDirIncomeFrequencyDescription } from './resources/dealerPortalDirIncomeFrequency';
+import { dealerPortalDirIndustryDescription } from './resources/dealerPortalDirIndustry';
+import { dealerPortalDirJobPositionDescription } from './resources/dealerPortalDirJobPosition';
+import { dealerPortalDirMaritalStatusDescription } from './resources/dealerPortalDirMaritalStatus';
+import { dealerPortalDirMarketingSourceDescription } from './resources/dealerPortalDirMarketingSource';
+import { dealerPortalDirPayDayDescription } from './resources/dealerPortalDirPayDay';
 import { dealerPortalDirRepaymentIntervalDescription } from './resources/dealerPortalDirRepaymentInterval';
+import { dealerPortalDirStateDescription } from './resources/dealerPortalDirState';
+import { dealerPortalApplicantDescription } from './resources/dealerPortalApplicant';
+import { dealerPortalInvoiceDescription } from './resources/dealerPortalInvoice';
+import { dealerPortalPartnerDescription } from './resources/dealerPortalPartner';
+import { dealerPortalPartnerInfoDescription } from './resources/dealerPortalPartnerInfo';
 import { dealerPortalProductDescription } from './resources/dealerPortalProduct';
 import { dealerPortalSysLoanOperationStatusDescription } from './resources/dealerPortalSysLoanOperationStatus';
 import { dealerPortalSysLoanOperationTypeDescription } from './resources/dealerPortalSysLoanOperationType';
@@ -90,15 +107,57 @@ export class Autoglass implements INodeType {
 		},
 		properties: [
 			{
+				displayName: 'API Category',
+				name: 'apiCategory',
+				type: 'options',
+				noDataExpression: true,
+				options: [
+					{ name: 'Core', value: 'core' },
+					{ name: 'Customer Portal', value: 'customerPortal' },
+					{ name: 'Dealer Portal', value: 'dealerPortal' },
+				],
+				default: 'core',
+				description: 'High-level group of API endpoints to use',
+			},
+			{
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
 				noDataExpression: true,
+				displayOptions: {
+					show: {
+						apiCategory: ['core'],
+					},
+				},
 				options: [
 					{ name: 'Audit Log', value: 'auditLog' },
+					{ name: 'Generic Menu', value: 'genericMenu' },
+					{ name: 'Generic Screen', value: 'genericScreen' },
+					{ name: 'Loan', value: 'loan' },
+					{ name: 'System Audit Event Type', value: 'sysAuditEventType' },
+					{ name: 'System Language', value: 'sysLang' },
+					{ name: 'System Module', value: 'sysModule' },
+					{ name: 'System Reminder Status', value: 'sysReminderStatusCore' },
+					{ name: 'System Statistic', value: 'systemStatistics' },
+					{ name: 'User', value: 'user' },
+					{ name: 'User Calendar Reminder', value: 'userCalendarReminder' },
+				],
+				default: 'user',
+			},
+			{
+				displayName: 'Resource',
+				name: 'resource',
+				type: 'options',
+				noDataExpression: true,
+				displayOptions: {
+					show: {
+						apiCategory: ['customerPortal'],
+					},
+				},
+				options: [
 					{ name: 'Customer Portal Dir Citizenship', value: 'customerPortalDirCitizenship' },
 					{ name: 'Customer Portal Dir Currency', value: 'customerPortalDirCurrency' },
-					{ name: 'Customer Portal Dir Current Month Days', value: 'customerPortalDirCurrentMonthDays' },
+					{ name: 'Customer Portal Dir Current Month Day', value: 'customerPortalDirCurrentMonthDays' },
 					{ name: 'Customer Portal Dir Income Frequency', value: 'customerPortalDirIncomeFrequency' },
 					{ name: 'Customer Portal Dir Job Position', value: 'customerPortalDirJobPosition' },
 					{ name: 'Customer Portal Dir Marital Status', value: 'customerPortalDirMaritalStatus' },
@@ -119,14 +178,45 @@ export class Autoglass implements INodeType {
 					{ name: 'Customer Portal Sys Loan Status', value: 'customerPortalSysLoanStatus' },
 					{ name: 'Customer Portal Sys Rate Type', value: 'customerPortalSysRateType' },
 					{ name: 'Customer Portal Sys Term Type', value: 'customerPortalSysTermType' },
+				],
+				default: 'customerPortalMyApp',
+			},
+			{
+				displayName: 'Resource',
+				name: 'resource',
+				type: 'options',
+				noDataExpression: true,
+				displayOptions: {
+					show: {
+						apiCategory: ['dealerPortal'],
+					},
+				},
+				options: [
+					{ name: 'Dealer Portal Applicant', value: 'dealerPortalApplicant' },
+					{ name: 'Dealer Portal Dir Annual Gross Revenue', value: 'dealerPortalDirAnnualGrossRevenue' },
+					{ name: 'Dealer Portal Dir Attachment Type', value: 'dealerPortalDirAttachmentType' },
+					{ name: 'Dealer Portal Dir Business Location', value: 'dealerPortalDirBusinessLocation' },
+					{ name: 'Dealer Portal Dir Business Role', value: 'dealerPortalDirBusinessRole' },
+					{ name: 'Dealer Portal Dir Citizenship', value: 'dealerPortalDirCitizenship' },
 					{ name: 'Dealer Portal Dir Currency', value: 'dealerPortalDirCurrency' },
+					{ name: 'Dealer Portal Dir Current Month Day', value: 'dealerPortalDirCurrentMonthDays' },
+					{ name: 'Dealer Portal Dir Income Frequency', value: 'dealerPortalDirIncomeFrequency' },
+					{ name: 'Dealer Portal Dir Industry', value: 'dealerPortalDirIndustry' },
+					{ name: 'Dealer Portal Dir Job Position', value: 'dealerPortalDirJobPosition' },
+					{ name: 'Dealer Portal Dir Marital Status', value: 'dealerPortalDirMaritalStatus' },
+					{ name: 'Dealer Portal Dir Marketing Source', value: 'dealerPortalDirMarketingSource' },
+					{ name: 'Dealer Portal Dir Pay Day', value: 'dealerPortalDirPayDay' },
 					{ name: 'Dealer Portal Dir Repayment Interval', value: 'dealerPortalDirRepaymentInterval' },
+					{ name: 'Dealer Portal Dir State', value: 'dealerPortalDirState' },
+					{ name: 'Dealer Portal Invoice', value: 'dealerPortalInvoice' },
 					{ name: 'Dealer Portal KYC Validation', value: 'dealerPortalKycValidation' },
 					{ name: 'Dealer Portal Loan App Queue', value: 'dealerPortalLoanAppQueue' },
 					{ name: 'Dealer Portal Loan Queue', value: 'dealerPortalLoanQueue' },
 					{ name: 'Dealer Portal My App', value: 'dealerPortalMyApp' },
 					{ name: 'Dealer Portal My Loan', value: 'dealerPortalMyLoan' },
 					{ name: 'Dealer Portal Ongoing Payment', value: 'dealerPortalOngoingPayment' },
+					{ name: 'Dealer Portal Partner', value: 'dealerPortalPartner' },
+					{ name: 'Dealer Portal Partner Info', value: 'dealerPortalPartnerInfo' },
 					{ name: 'Dealer Portal Payment', value: 'dealerPortalPayment' },
 					{ name: 'Dealer Portal Product', value: 'dealerPortalProduct' },
 					{ name: 'Dealer Portal Sys Loan Operation Status', value: 'dealerPortalSysLoanOperationStatus' },
@@ -134,18 +224,8 @@ export class Autoglass implements INodeType {
 					{ name: 'Dealer Portal Sys Loan Schedule Item Status', value: 'dealerPortalSysLoanScheduleItemStatus' },
 					{ name: 'Dealer Portal Sys Loan Status', value: 'dealerPortalSysLoanStatus' },
 					{ name: 'Dealer Portal Sys Term Type', value: 'dealerPortalSysTermType' },
-					{ name: 'Generic Menu', value: 'genericMenu' },
-					{ name: 'Generic Screen', value: 'genericScreen' },
-					{ name: 'Loan', value: 'loan' },
-					{ name: 'System Audit Event Type', value: 'sysAuditEventType' },
-					{ name: 'System Language', value: 'sysLang' },
-					{ name: 'System Module', value: 'sysModule' },
-					{ name: 'System Reminder Status', value: 'sysReminderStatusCore' },
-					{ name: 'System Statistic', value: 'systemStatistics' },
-					{ name: 'User', value: 'user' },
-					{ name: 'User Calendar Reminder', value: 'userCalendarReminder' },
 				],
-				default: 'user',
+				default: 'dealerPortalMyApp',
 			},
 			...userDescription,
 			...loanDescription,
@@ -189,8 +269,25 @@ export class Autoglass implements INodeType {
 			...dealerPortalMyLoanDescription,
 			...dealerPortalOngoingPaymentDescription,
 			...dealerPortalPaymentDescription,
+			...dealerPortalApplicantDescription,
+			...dealerPortalDirAnnualGrossRevenueDescription,
+			...dealerPortalDirAttachmentTypeDescription,
+			...dealerPortalDirBusinessLocationDescription,
+			...dealerPortalDirBusinessRoleDescription,
+			...dealerPortalDirCitizenshipDescription,
+			...dealerPortalDirCurrentMonthDaysDescription,
 			...dealerPortalDirCurrencyDescription,
+			...dealerPortalDirIncomeFrequencyDescription,
+			...dealerPortalDirIndustryDescription,
+			...dealerPortalDirJobPositionDescription,
+			...dealerPortalDirMaritalStatusDescription,
+			...dealerPortalDirMarketingSourceDescription,
+			...dealerPortalDirPayDayDescription,
 			...dealerPortalDirRepaymentIntervalDescription,
+			...dealerPortalDirStateDescription,
+			...dealerPortalInvoiceDescription,
+			...dealerPortalPartnerDescription,
+			...dealerPortalPartnerInfoDescription,
 			...dealerPortalProductDescription,
 			...dealerPortalSysLoanOperationStatusDescription,
 			...dealerPortalSysLoanOperationTypeDescription,
